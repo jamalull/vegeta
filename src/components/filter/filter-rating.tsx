@@ -9,7 +9,7 @@ const FilterRating = () => {
       <div className="flex flex-col gap-2 my-4">
         <div className="flex gap-2 items-center">
           <Checkbox
-            className="w-6 h-6 border-2 border-leaf data-[state=checked]:bg-leaf data-[state=checked]:text-primary-foreground"
+            className="size-6 border-2 border-leaf data-[state=checked]:bg-leaf data-[state=checked]:text-primary-foreground"
             id={"rate-all"}
           />
           <label
@@ -21,9 +21,12 @@ const FilterRating = () => {
         </div>
 
         {[5, 4, 3, 2, 1].map((rate, index) => (
-          <div key={`rating_${index}`} className="flex gap-2 items-center">
+          <div
+            key={`rating_${index}`}
+            className="flex gap-2 items-center"
+          >
             <Checkbox
-              className="w-6 h-6 border-2 border-leaf data-[state=checked]:bg-leaf data-[state=checked]:text-primary-foreground"
+              className="size-6 border-2 border-leaf data-[state=checked]:bg-leaf data-[state=checked]:text-primary-foreground"
               id={`rate-${rate}`}
             />
             <label

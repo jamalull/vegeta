@@ -17,7 +17,7 @@ const FilterCategory = () => {
             className="flex gap-2 items-center"
           >
             <Checkbox
-              className="w-6 h-6 border-2 border-leaf data-[state=checked]:bg-leaf data-[state=checked]:text-primary-foreground"
+              className="size-6 border-2 border-leaf data-[state=checked]:bg-leaf data-[state=checked]:text-primary-foreground"
               id={category.id}
             />
             <label
