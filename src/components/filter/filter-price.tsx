@@ -8,7 +8,7 @@ const FilterPrice = () => {
       <div className="my-4 relative">
         <Input
           className="w-full"
-          type="text"
+          type="number"
           placeholder=""
           prefix="text-Rp"
         />
@@ -17,7 +17,7 @@ const FilterPrice = () => {
       <div className="my-4 relative">
         <Input
           className="w-full"
-          type="text"
+          type="number"
           placeholder=""
           prefix="text-Rp"
         />

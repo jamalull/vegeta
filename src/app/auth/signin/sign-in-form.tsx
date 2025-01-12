@@ -6,14 +6,43 @@ import { hover } from "@/lib/hover";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+type UserAuthForm = {
+  email: string;
+  password: string;
+};
+
+const schema = yup
+  .object({
+    email: yup.string().email().required(),
+    password: yup.string().min(6).required(),
+  })
+  .required();
 
 function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<UserAuthForm>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: UserAuthForm) => {
+    console.log("🚀 ~ file: sign-in-form.tsx:27 ~ onSubmit ~ data:", data);
+  };
 
   return (
-    <form className="flex flex-col w-[100%] gap-4 items-center">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col w-[100%] gap-4 items-center"
+    >
       <div className="w-[100%] text-3xl font-semibold tracking-widest mb-2 text-center">
         Masuk akun anda
       </div>
@@ -22,6 +51,8 @@ function SignInForm() {
           className="w-[100%] p-4 rounded-sm"
           type="text"
           placeholder="Email"
+          {...register("email")}
+          error={errors.email?.message}
         />
       </div>
       <div className="w-[100%] relative">
@@ -31,14 +62,14 @@ function SignInForm() {
           placeholder="Kata Sandi"
           suffix="Eye"
           onPressSuffix={() => setShowPassword(!showPassword)}
+          {...register("password")}
+          error={errors.password?.message}
         />
       </div>
 
       <Button
         className={cn("w-[320px] bg-leaf mt-6", hover.shadow)}
-        onClick={() => {
-          router.push("/");
-        }}
+        type="submit"
       >
         Masuk
       </Button>

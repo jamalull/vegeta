@@ -9,8 +9,8 @@ import ProductCategoryJSON from "@/assets/json/product-category.json";
 const FilterCategory = () => {
   return (
     <>
-      <div className="text-base">Kategori</div>
-      <div className="flex flex-col gap-2 my-4">
+      <div className="text-base font-medium">Kategori</div>
+      <div className="flex flex-col gap-2 my-4 font-medium">
         {ProductCategoryJSON.map((category) => (
           <div
             key={`productCategory-${category.id}`}
